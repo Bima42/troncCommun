@@ -1,35 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 15:47:14 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/13 23:19:51 by tpauvret         ###   ########.fr       */
+/*   Created: 2021/10/13 13:33:22 by tpauvret          #+#    #+#             */
+/*   Updated: 2021/10/13 23:40:04 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static int	ft_is_in_set(char c, char const *set)
 {
-	char	*ret;
-	size_t	count;
-
-	count = 0;
-	if (!s)
-		return (NULL);
-	if ((size_t)start > ft_strlen(s))
-		return (ft_strdup(""));
-	ret = (char *)malloc(sizeof(char) * (len + 1));
-	if (ret == NULL)
-		return (NULL);
-	while (count < len)
+	while (*set)
 	{
-		ret[count] = s[start + count];
-		count++;
+		if (c == *set)
+			return (0);
+		set++;
 	}
-	ret[count] = '\0';
+	return (1);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	count;
+	size_t	finish;
+	char	*ret;
+
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	finish = ft_strlen(s1);
+	count = 0;
+	while (ft_is_in_set(s1[count], set) == 0)
+		count++;
+	if (count == finish)
+		return (ft_strdup(""));
+	while (ft_is_in_set(s1[finish - 1], set) == 0)
+		finish--;
+	ret = ft_substr(s1, count, (finish - count));
 	return (ret);
 }

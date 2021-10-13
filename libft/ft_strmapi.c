@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 11:54:55 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/13 14:40:31 by tpauvret         ###   ########.fr       */
+/*   Created: 2021/10/13 16:18:43 by tpauvret          #+#    #+#             */
+/*   Updated: 2021/10/13 23:20:31 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	sign;
-	int	count;
-	int	res;
+	unsigned int	i;
+	char			*ret;
 
-	sign = 1;
-	count = 0;
-	res = 0;
-	while (nptr[count] == ' ' || (nptr[count] >= 9 && nptr[count] <= 13))
-		count++;
-	if (nptr[count] == '-' || nptr[count] == '+')
+	if (!(ft_strncmp(s, "", 1)))
+		return (ft_strdup(""));
+	if (!f)
+		return (NULL);
+	i = 0;
+	ret = (char *)malloc(sizeof(char) * ft_strlen(s));
+	if (ret == NULL)
+		return (NULL);
+	while (s[i])
 	{
-		if (nptr[count] == '-')
-			sign = sign * -1;
-		count++;
+		ret[i] = (*f)(i, s[i]);
+		i++;
 	}
-	while (nptr[count] >= '0' && nptr[count] <= '9')
-	{
-		res = res * 10 + nptr[count] - '0';
-		count++;
-	}
-	return (res * sign);
+	return (ret);
 }
