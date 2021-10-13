@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 13:31:52 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/13 14:40:47 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/14 00:33:18 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strrchr(const char *s, int c)
 	int	count;
 
 	count = ft_strlen(s);
+	if (s[0] == '\0')
+		return ((char *)s);
 	if (count > 0)
 	{
 		while (s[count] != (char)c && count > 0)
