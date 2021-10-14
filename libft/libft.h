@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 11:49:28 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/13 23:42:46 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/14 19:42:23 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strmapi(char const	*s, char (*f)(unsigned int, char));
+char	*ft_itoa(int n);
+char	**ft_split(char const *s, char c);
 
 #endif

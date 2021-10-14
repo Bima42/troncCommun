@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 14:15:31 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/11 19:14:33 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/14 16:39:16 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	if (i == n)
 		return (0);
 	else
-		return (s1[i] - s2[i]);
+		return ((int)s1[i] - (int)s2[i]);
 }
 
 /*int	main()

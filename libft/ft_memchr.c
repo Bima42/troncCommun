@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 11:56:56 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/14 00:31:32 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/14 19:16:41 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t			count;
+	size_t	count;
 
 	count = 0;
 	while (count < n)
