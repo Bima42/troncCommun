@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 16:18:43 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/13 23:20:31 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/15 16:46:05 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*ret;
 
+	if (!s || !f)
+		return (NULL);
 	if (!(ft_strncmp(s, "", 1)))
 		return (ft_strdup(""));
-	if (!f)
-		return (NULL);
 	i = 0;
-	ret = (char *)malloc(sizeof(char) * ft_strlen(s));
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (ret == NULL)
 		return (NULL);
 	while (s[i])
@@ -30,5 +30,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		ret[i] = (*f)(i, s[i]);
 		i++;
 	}
+	ret[i] = '\0';
 	return (ret);
 }

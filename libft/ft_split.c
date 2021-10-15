@@ -5,129 +5,125 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 16:56:01 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/14 21:11:01 by tpauvret         ###   ########.fr       */
+/*   Created: 2021/10/15 02:03:20 by tpauvret          #+#    #+#             */
+/*   Updated: 2021/10/15 17:45:20 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
-//#include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-/*size_t	ft_strlen(const char *str)
+static int	ft_count_words(char const *s, char c)
 {
-	size_t	count;
+	int		nb_words;
+	int		flag;
+	char	*cpy;
 
-	count = 0;
-	while (str[count] != '\0')
-		count++;
-	return (count);
+	nb_words = 0;
+	cpy = (char *)s;
+	while (*cpy == c)
+		cpy++;
+	if (*cpy != c && cpy)
+		nb_words++;
+	while (*cpy)
+	{
+		flag = 0;
+		while (*cpy == c && *cpy)
+		{
+			flag = 1;
+			cpy++;
+		}
+		if (flag && cpy)
+			nb_words++;
+		if (*cpy)
+			cpy++;
+	}
+	return (--nb_words);
 }
 
-char	*ft_strdup(const char *s1)
+static int	*ft_start_words(char *s, char c, int nb_words)
 {
-	int		size_src;
-	int		c;
-	char	*string;
-	char	*ret;
-
-	size_src = ft_strlen((char *)s1);
-	string = (char *)s1;
-	ret = malloc(size_src * sizeof(char));
-	if (ret == NULL)
-		return (NULL);
-	c = 0;
-	while (c != size_src)
-	{
-		ret[c] = string[c];
-		c++;
-	}
-	ret[c] = '\0';
-	return (ret);
-}*/
-
-static int ft_count_words(char const *s, char c)
-{
-	int	count;
+	int	*size_words;
 	int	i;
+	int	j;
+	int	flag;
 
-	count = 0;
 	i = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			count++;
-		i++;
-	}
-	return (++count);
-}
-
-static char	*ft_fill_array(char const *s, int *i, int len_w, char c)
-{
-	char	*str;
-	int		count;
-	int		j;
-
-	count = *i - len_w;
 	j = 0;
-	str = (char *)malloc(sizeof(char) * (len_w + 1));
-	if (str == NULL)
+	size_words = (int *)malloc(sizeof(int) * nb_words);
+	if (!size_words)
 		return (NULL);
-	while (count < *i)
-	{
-		str[j] = s[count];
+	while (s[j] == c && s[j])
 		j++;
-		count++;
+	if (s[j] != c)
+		size_words[i++] = j;
+	while (s[j])
+	{
+		flag = 0;
+		while (s[j] && s[j++] == c)
+			flag = 1;
+		if (flag)
+			size_words[i++] = j;
 	}
-	str[j] = '\0';
-	while (s[*i] == c)
-		*i += 1;
-	return (str);
+	return (size_words);
 }
+
+static char	*ft_fill_array(char *s, char c, int len)
+{
+	int	j;
+
+	j = 0;
+	while (*(s + len + j) && *(s + len + j) != c)
+		j++;
+	return (ft_substr(s, len, j));
+}
+
+/*static void	*ft_free(char **array, int i)
+{
+	while (i-- > 0)
+		free(array[i]);
+	free(array);
+	return (NULL);
+}*/
 
 char	**ft_split(char const *s, char c)
 {
-	char	**array;
-	int		words;
+	int		nb_words;
 	int		i;
-	int		j;
-	int		len_w;;
+	char	**array;
+	int		*start_words;
 
-	while (*s == c)
-		s++;
-	if (*s == '\0')
-		return ((char **)ft_strdup(""))
-	words = ft_count_words(s, c);
-	i = -1;
-	j = 0;
-	len_w = -1;
-	array = (char **)malloc(sizeof(char *) * (words + 1));
-	if (array == NULL)
+	i = 0;
+	nb_words = ft_count_words(s, c);
+	array = (char **)malloc(sizeof(char *) * (nb_words + 1));
+	if (!array)
 		return (NULL);
-	while (s[++i])
+	start_words = ft_start_words((char *)s, c, nb_words);
+	if (!start_words)
+		return (NULL);
+	while (array[i])
 	{
-		len_w++;
-		if (s[i] == c)
-		{
-			array[j++] = ft_fill_array(s, &i, len_w, c);
-			len_w = 0;
-		}
+		array[i] = ft_fill_array((char *)s, c, start_words[i]);
+	//	if (array[i] == NULL)
+	//		return (ft_free(array, i));
+		i++;
 	}
-	array[j] = ft_fill_array(s, &i, ++len_w, c);
+	array[nb_words] = NULL;
 	return (array);
 }
 
-/*int	main()
+int	main()
 {
-	char const s[] = "XXcoucouXXcaXva";
-	char c = 'X';
+	char const s[] = "split  ||this|for|me|||||!|";
+	char c = '|';
 	int i = 0;
 	char	**split_rec = ft_split (s, c);
 
-	while (i < 4)
+	while (i < 6)
 	{
 		printf("%s\n", split_rec[i]);
 		i++;
 	}
 	return (0);
-}*/
+}

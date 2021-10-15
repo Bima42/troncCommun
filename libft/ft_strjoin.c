@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 21:22:13 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/12 22:21:37 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/14 22:53:06 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	ind;
 	char	*ret;
 
+	if (!s1 || !s2)
+		return (NULL);
 	ind = ft_strlen(s1) + ft_strlen(s2);
 	ret = (char *)malloc(sizeof(char) * (ind + 1));
 	if (ret == NULL)

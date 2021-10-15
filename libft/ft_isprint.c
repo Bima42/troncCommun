@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 11:56:28 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/12 12:29:17 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/14 21:26:09 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isprint(int c)
 {
-	if ((unsigned char)c >= 32 && (unsigned char)c <= 126)
+	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }
