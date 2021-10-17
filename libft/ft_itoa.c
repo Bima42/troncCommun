@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 23:55:01 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/16 23:30:26 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/17 20:36:29 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ char	*ft_itoa(int n)
 	int		sign;
 	char	*ret;
 
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	size = ft_size_nbr(n);
 	sign = 0;
 	if (n != 0)
@@ -67,8 +69,6 @@ char	*ft_itoa(int n)
 		return (ret = ft_strdup("0"));
 	if (ret == NULL)
 		return (NULL);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	else
 		return (ft_fill_string(ret, n, size, sign));
 }

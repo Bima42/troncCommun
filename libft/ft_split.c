@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 02:03:20 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/17 18:59:07 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/17 19:04:02 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static int	ft_size_words(char *s, char c)
 	}
 	return (size);
 }
+
 static void	*ft_free(char **array, int i)
 {
 	while (i-- > 0)
