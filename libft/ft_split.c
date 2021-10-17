@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 02:03:20 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/15 17:45:20 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/16 23:30:47 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+static int	ft_count_words(char const *s, char c);
+static int	*ft_start_words(char *s, char c, int nb_words);
+static char	*ft_fill_array(char *s, char c, int len);
+static void	*ft_free(char **array, int i);
+
 static int	ft_count_words(char const *s, char c)
 {
-	int		nb_words;
-	int		flag;
-	char	*cpy;
+	int	i;
+	int	words;
 
-	nb_words = 0;
-	cpy = (char *)s;
-	while (*cpy == c)
-		cpy++;
-	if (*cpy != c && cpy)
-		nb_words++;
-	while (*cpy)
+	i = 0;
+	words = 0;
+	if (s[i] == c)
+		words--;
+	while (s[i] != '\0')
 	{
-		flag = 0;
-		while (*cpy == c && *cpy)
-		{
-			flag = 1;
-			cpy++;
-		}
-		if (flag && cpy)
-			nb_words++;
-		if (*cpy)
-			cpy++;
+		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
+			words++;
+		i++;
 	}
-	return (--nb_words);
+	return (words + 1);
 }
 
 static int	*ft_start_words(char *s, char c, int nb_words)
@@ -52,19 +47,18 @@ static int	*ft_start_words(char *s, char c, int nb_words)
 	i = 0;
 	j = 0;
 	size_words = (int *)malloc(sizeof(int) * nb_words);
-	if (!size_words)
+	if (size_words == NULL)
 		return (NULL);
-	while (s[j] == c && s[j])
-		j++;
 	if (s[j] != c)
-		size_words[i++] = j;
+		size_words[i++] = j++;
 	while (s[j])
 	{
 		flag = 0;
-		while (s[j] && s[j++] == c)
+		if (s[j] != c && s[j - 1] == c)
 			flag = 1;
-		if (flag)
+		if (s[j] && flag)
 			size_words[i++] = j;
+		j++;
 	}
 	return (size_words);
 }
@@ -79,13 +73,13 @@ static char	*ft_fill_array(char *s, char c, int len)
 	return (ft_substr(s, len, j));
 }
 
-/*static void	*ft_free(char **array, int i)
+static void	*ft_free(char **array, int i)
 {
-	while (i-- > 0)
+	while (i--)
 		free(array[i]);
 	free(array);
 	return (NULL);
-}*/
+}
 
 char	**ft_split(char const *s, char c)
 {
@@ -94,26 +88,28 @@ char	**ft_split(char const *s, char c)
 	char	**array;
 	int		*start_words;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	nb_words = ft_count_words(s, c);
 	array = (char **)malloc(sizeof(char *) * (nb_words + 1));
-	if (!array)
+	if (array == NULL)
 		return (NULL);
 	start_words = ft_start_words((char *)s, c, nb_words);
 	if (!start_words)
 		return (NULL);
-	while (array[i])
+	while (i < nb_words)
 	{
 		array[i] = ft_fill_array((char *)s, c, start_words[i]);
-	//	if (array[i] == NULL)
-	//		return (ft_free(array, i));
+		if (array[i] == NULL)
+			return (ft_free(array, i));
 		i++;
 	}
 	array[nb_words] = NULL;
 	return (array);
 }
 
-int	main()
+/*int	main()
 {
 	char const s[] = "split  ||this|for|me|||||!|";
 	char c = '|';
@@ -126,4 +122,4 @@ int	main()
 		i++;
 	}
 	return (0);
-}
+}*/

@@ -6,11 +6,14 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 23:55:01 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/14 23:30:21 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/16 23:30:26 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_size_nbr(int nbr);
+static char	*ft_fill_string(char *ret, int n, int size, int sign);
 
 static int	ft_size_nbr(int nbr)
 {

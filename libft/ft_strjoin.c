@@ -6,11 +6,13 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 21:22:13 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/14 22:53:06 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/16 23:29:50 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	*fill_string(char *ret, char const *s1, char const *s2, size_t ind);
 
 static char	*fill_string(char *ret, char const *s1, char const *s2, size_t ind)
 {
