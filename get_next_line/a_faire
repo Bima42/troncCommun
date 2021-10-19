@@ -1,0 +1,6 @@
+Fonctions a add en utils :
+    strlen
+    strjoin
+    strchr
+    strcpy
+    substr
