@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 02:03:20 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/17 19:04:02 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/17 20:50:18 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,16 @@ char	**ft_split(char const *s, char c)
 {
 	int		i;
 	char	**array;
-	int		nword;
+	int		num_words;
 
 	if (!s)
 		return (NULL);
 	i = 0;
-	nword = ft_count_words(s, c);
+	num_words = ft_count_words(s, c);
 	array = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (!array)
 		return (NULL);
-	while (i < nword)
+	while (i < num_words)
 	{
 		while (*s == c && *s)
 			s++;
