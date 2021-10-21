@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/21 17:31:03 by tpauvret          #+#    #+#             */
+/*   Updated: 2021/10/21 17:33:01 by tpauvret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 static char	*ft_strchr(const char *s, int c)
@@ -7,7 +19,7 @@ static char	*ft_strchr(const char *s, int c)
 
 	res = (char *)s;
 	count = 0;
-	while(s[count] != '\0')
+	while (s[count] != '\0')
 	{
 		if (s[count] == (char)c)
 			return (res);
@@ -19,7 +31,7 @@ static char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-static size_t ft_strlen(const char *str)
+static size_t	ft_strlen(const char *str)
 {
 	size_t	count;
 
@@ -51,7 +63,7 @@ static char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (ret);
 }
 
-static char *ft_strcpy(char *dest, const char *src)
+static char	*ft_strcpy(char *dest, const char *src)
 {
 	int	i;
 
@@ -64,7 +76,6 @@ static char *ft_strcpy(char *dest, const char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-
 
 static char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -91,6 +102,6 @@ static char	*ft_strjoin(char const *s1, char const *s2)
 			i++;
 		}
 	}
-	ret [i] = '\0';
+	ret[i] = '\0';
 	return (ret);
 }
