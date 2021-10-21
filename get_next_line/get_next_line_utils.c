@@ -6,13 +6,13 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 17:31:03 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/21 17:33:01 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 22:34:49 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int		count;
 	char	*res;
@@ -31,7 +31,27 @@ static char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-static size_t	ft_strlen(const char *str)
+char	*ft_strdup(const char *s1)
+{
+	int		size_src;
+	int		c;
+	char	*ret;
+
+	size_src = ft_strlen(s1);
+	ret = (char *)malloc(sizeof(char) * (size_src + 1));
+	if (ret == NULL)
+		return (NULL);
+	c = 0;
+	while (s1[c])
+	{
+		ret[c] = s1[c];
+		c++;
+	}
+	ret[c] = '\0';
+	return (ret);
+}
+
+size_t	ft_strlen(const char *str)
 {
 	size_t	count;
 
@@ -41,7 +61,7 @@ static size_t	ft_strlen(const char *str)
 	return (count);
 }
 
-static char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ret;
 	size_t	count;
@@ -63,45 +83,23 @@ static char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (ret);
 }
 
-static char	*ft_strcpy(char *dest, const char *src)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
+	char	*dst;
+	int		size;
+	int		i;
+	int		j;
 
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-static char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	ind;
-	size_t	i;
-	size_t	j;
-	char	*ret;
-
-	if (!s1 || !s2)
+	size = (ft_strlen(s1) + ft_strlen(s2) + 1);
+	dst = (char *)malloc(sizeof(char) * size);
+	if (!dst)
 		return (NULL);
-	ind = ft_strlen(s1) + ft_strlen(s2);
 	i = -1;
+	while (s1[++i])
+		dst[i] = s1[i];
 	j = 0;
-	ret = (char *)malloc(sizeof(char) * (ind + 1));
-	if (!ret)
-		return (NULL);
-	while (i < ind)
-	{
-		while (s1[++i] != '\0')
-			ret[i] = s1[i];
-		while (s2[j] != '\0')
-		{
-			ret[i] = s2[j++];
-			i++;
-		}
-	}
-	ret[i] = '\0';
-	return (ret);
+	while (s2[j])
+		dst[i++] = s2[j++];
+	dst[i] = '\0';
+	return (dst);
 }
