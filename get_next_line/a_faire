@@ -1,0 +1,6 @@
+Fonctions a add en utils :
+    strlen
+    strjoin : CHECKER SI IL FONCTIONNE COMME CA
+    strchr
+    strcpy
+    substr
