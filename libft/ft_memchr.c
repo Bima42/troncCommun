@@ -6,9 +6,11 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 11:56:56 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/14 19:16:41 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:34:00 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who search occurence and return a pointer at the occurence on s
 
 #include "libft.h"
 

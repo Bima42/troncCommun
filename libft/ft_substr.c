@@ -6,9 +6,14 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:47:14 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/21 19:58:00 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:30:44 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Functon who create a new string
+//She take an existing string, a start and a size
+//then copy the string s on an other, starting at "start"
+//for a maximum lenght "len"
 
 #include "libft.h"
 

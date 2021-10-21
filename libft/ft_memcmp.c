@@ -6,9 +6,11 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 11:57:04 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/14 23:11:02 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:34:21 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function as strncmp but for memory
 
 #include "libft.h"
 

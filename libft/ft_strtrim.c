@@ -6,9 +6,13 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:33:22 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/14 00:23:15 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:32:44 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who trim a string at the beginning and at the end
+//the return is the string without "set" at the beginning and the end
+//if this "set" was found
 
 #include "libft.h"
 

@@ -6,9 +6,12 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 22:08:19 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/17 20:41:57 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:24:31 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who apply a function on all element of a chained list
+//then create a new list resulting of this function on the first list
 
 #include "libft.h"
 

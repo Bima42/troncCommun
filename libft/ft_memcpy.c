@@ -6,9 +6,12 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 11:57:12 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/14 22:58:14 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:35:28 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who copy src on dest, but with void type
+//and the copy is stopped atfer n times char copied
 
 #include "libft.h"
 

@@ -6,9 +6,12 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 14:21:44 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/12 14:15:37 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:29:39 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who find occurence of a string in another string
+//return a pointer on this occurence
 
 #include "libft.h"
 

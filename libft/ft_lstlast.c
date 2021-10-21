@@ -6,9 +6,11 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:47:36 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/16 18:24:15 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:23:25 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who return the last cells of a chained list
 
 #include "libft.h"
 

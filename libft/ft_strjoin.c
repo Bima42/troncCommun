@@ -6,9 +6,11 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 21:22:13 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/16 23:29:50 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:27:52 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who join two string together on anoter one
 
 #include "libft.h"
 

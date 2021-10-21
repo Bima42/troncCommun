@@ -6,11 +6,13 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 23:55:01 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/17 20:36:29 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:22:05 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+//Function that convert an int to a string of numbers
 
 static int	ft_size_nbr(int nbr);
 static char	*ft_fill_string(char *ret, int n, int size, int sign);

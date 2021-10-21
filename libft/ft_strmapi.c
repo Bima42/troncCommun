@@ -6,9 +6,12 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 16:18:43 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/15 16:46:05 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:28:45 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who apply a function on a string s, char by char
+//but create a new string then return it
 
 #include "libft.h"
 

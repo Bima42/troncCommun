@@ -6,11 +6,13 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 11:54:55 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/13 14:40:31 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:21:37 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+//Fuction that convert an ascii numbers to an int
 
 int	ft_atoi(const char *nptr)
 {

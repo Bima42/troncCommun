@@ -6,9 +6,11 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 11:57:38 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/11 19:13:17 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:36:32 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who fill a void type b by a char "c" for len times
 
 #include "libft.h"
 

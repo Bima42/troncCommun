@@ -6,9 +6,13 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 02:03:20 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/21 17:24:32 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/21 23:25:53 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//Function who cut a string at the separator c
+//then fill a bidemsionnal array with all the words
+//who composing the string
 
 #include "libft.h"
 
