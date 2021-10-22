@@ -6,7 +6,7 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:30:58 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/22 17:41:48 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/22 22:30:08 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,51 +26,62 @@ static int	ft_index_new_line(char *buf)
 	}
 	if (*buf == '\n')
 		return (index);
-	return (0);
+	return (-1);
 }
 
 char	*get_next_line(int fd)
 {
 	char			buf[BUFFER_SIZE + 1];
-	static char		*keep = NULL;
-	unsigned int	newline;
+	static char		*keep;
+	int				newline;
 	char			*ret;
 	char			*tmp;
 	int				count;
 
+	if (read(fd, 0, 0))
+		return (NULL);
+	if (!keep)
+		keep = ft_substr("", 0, 1);
 	count = 1;
-	tmp = malloc(1);
-	*tmp = '\0';
-	while (count > 0)
+	while (keep)
 	{
-		count = read(fd, buf, BUFFER_SIZE);
-		buf[count] = '\0';
-		if (keep != NULL)
+		if (ft_index_new_line(keep) == -1)
 		{
-			newline = ft_index_new_line(keep);
-			if (newline)
-				tmp = ft_substr(keep, 0, (newline + 1));
-			else
-				tmp = ft_strdup(keep);
+			count = read(fd, buf, BUFFER_SIZE);
+			if (count < 0)
+				return (NULL);
+			buf[count] = '\0';
+			tmp = ft_strjoin(keep, buf);
 			free(keep);
-			keep = NULL;
+			keep = tmp;
 		}
-		newline = ft_index_new_line(buf);
-		if (ft_strlen(buf))
+		newline = ft_index_new_line(keep) + 1;
+		if (newline > 0)
 		{
-			keep = ft_substr(buf, (newline + 1), (ft_strlen(buf) - newline));
-			ret = ft_strjoin(tmp, ft_substr(buf, 0, (newline + 1)));
-			free(tmp);
+			ret = ft_substr(keep, 0, newline);
+			tmp = ft_substr(keep, newline, (ft_strlen(keep) - newline));
+			free(keep);
+			keep = tmp;
 			return (ret);
 		}
-		else if (ft_strlen(tmp))
-			return (tmp);
+		else if (*keep && ! count)
+		{
+			ret = ft_substr(keep, 0, ft_strlen(keep));
+			free(keep);
+			keep = NULL;
+			return(ret);
+		}
+		else if (! *keep && ! count)
+		{
+			free(keep);
+			keep = NULL;
+			break;
+		}
 	}
-	free(tmp);
 	return (NULL);
 }
-
-/*int main()
+/*
+int main()
 {
 	int	fd;
 	char *ret;
@@ -87,4 +98,5 @@ char	*get_next_line(int fd)
 	ret = get_next_line(fd);
 	printf("%s", ret);
 	return (0);
-}*/
+}
+*/
