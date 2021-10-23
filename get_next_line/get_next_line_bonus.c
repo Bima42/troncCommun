@@ -6,11 +6,11 @@
 /*   By: tpauvret <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 17:30:39 by tpauvret          #+#    #+#             */
-/*   Updated: 2021/10/24 00:30:10 by tpauvret         ###   ########.fr       */
+/*   Updated: 2021/10/23 20:15:12 by tpauvret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	index_new_line(char *buf);
 static void	clear(char **keep);
@@ -88,27 +88,27 @@ static void	clear(char **keep)
 char	*get_next_line(int fd)
 {
 	char			*buf;
-	static char		*keep;
+	static char		*keep[4096];
 	char			*tmp;
 	int				readed;
 
 	if (read(fd, 0, 0))
 		return (NULL);
-	if (!keep)
-		keep = ft_substr("", 0, 1);
+	if (!keep[fd])
+		keep[fd] = ft_substr("", 0, 1);
 	readed = 0;
-	while (keep)
+	while (keep[fd])
 	{
-		if (index_new_line(keep) == -1)
+		if (index_new_line(keep[fd]) == -1)
 		{
-			buf = read_file(&keep, &tmp, &readed, fd);
+			buf = read_file(&keep[fd], &tmp, &readed, fd);
 			if (buf == NULL)
 				return (NULL);
 		}
-		if (index_new_line(keep) + 1 > 0 || (*keep && !readed))
-			return (return_readed_lines(&keep, &tmp, readed));
-		if (!*keep && !readed)
-			clear(&keep);
+		if (index_new_line(keep[fd]) + 1 > 0 || (*keep[fd] && !readed))
+			return (return_readed_lines(&keep[fd], &tmp, readed));
+		if (!*keep[fd] && !readed)
+			clear(&keep[fd]);
 	}
 	return (NULL);
 }
