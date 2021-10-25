@@ -1,13 +1,13 @@
 Debian : 
-	*Plus simple a prendre en main et a setup
-	*ISO = netinst debian x64
-	*Pas d'interface graphique;
-	*logiciel libre, au code source ouvert
-	*base sur linux
+	- Plus simple a prendre en main et a setup
+	- ISO = netinst debian x64
+	*- Pas d'interface graphique;
+	- logiciel libre, au code source ouvert
+	- base sur linux
 LVM, c'est quoi ? 
-	*Gestionnaire de volumes logiques pour Linux
-	*Fourni une couche d'abstraction entre l'espace stockage physique et le systeme : creer partitions virtuelles faciles a gerer
-	*Composer par les elements suivants :
+	- Gestionnaire de volumes logiques pour Linux
+	- Fourni une couche d'abstraction entre l'espace stockage physique et le systeme : creer partitions virtuelles faciles a gerer
+	- Composer par les elements suivants :
 		Volume Physique (PV) : espaces stockages traditionnels sur lesquels LVM cree ses volumes logiques
 		Groupes de Volumes (VG) : groupes de volumes physiques reunis par LVM en un seul "disque virtuel". Un VG contient des volumes logiques qui sont repartis par LVM sur les differents volumes physiques
 		Volumes Logiques (LV) : "partitions virtuelles" constitues d'etendues de blocs physiques reunis en un seul espace de stockage reunis en un seul espace de stockage et rendus lisibles par le systeme
@@ -17,19 +17,19 @@ LVM, c'est quoi ?
 			on peut creer des snapshot (read only) de n'importe quel LV (utile pour back up de serveurs etc ...)
 
 Snapshot : 
-	*aussi appele "instantane de stockage"
-	*realiser une copie de donnees stockees sur un systeme de stockage ou copie des modifications apportees a ces donnees
+	- aussi appele "instantane de stockage"
+	- realiser une copie de donnees stockees sur un systeme de stockage ou copie des modifications apportees a ces donnees
 	= "photo" des donnees stockees sur un systeme de stockage a un instant precis
-	*permet a utilisateur de restaurer les donnees telles quelles etaient lors de la capture (permet de proteger donnees en cas d'erreur de manipulation humaine ou de corruption de donnees)
-	*peut en realiser plusieurs, et donc de choisir lequel on souhaite restaurer
-	*chacun est stocker sur disque virtuel different
-	*differents snapshot sont lies par relation parent-enfant et forment arborescence. Chacun d'eux forment une nouvelle branche d'arbre
+	- permet a utilisateur de restaurer les donnees telles quelles etaient lors de la capture (permet de proteger donnees en cas d'erreur de manipulation humaine ou de corruption de donnees)
+	- peut en realiser plusieurs, et donc de choisir lequel on souhaite restaurer
+	- chacun est stocker sur disque virtuel different
+	- differents snapshot sont lies par relation parent-enfant et forment arborescence. Chacun d'eux forment une nouvelle branche d'arbre
 
 Partition : 
-	*Chiffrer les donnees d'un disque permet d'assurer une certaines confidentialite de ces donnees
-	*Partition = section d'un support de stockage (disque dur, SSD ..). Partitionner ca vise a diviser le support en partitions dans lesquelles le systeme d'exploitation peut gerer les informations separemment
-	*Autre que la rapidite d'acces, sans partionnement, a la suite d'un crash il faudrait reinstaller le systeme d'exploitation
-	*En bref, il permet de proteger et isoler les differents composants du systeme de fichiers
+	- Chiffrer les donnees d'un disque permet d'assurer une certaines confidentialite de ces donnees
+	- Partition = section d'un support de stockage (disque dur, SSD ..). Partitionner ca vise a diviser le support en partitions dans lesquelles le systeme d'exploitation peut gerer les informations separemment
+	- Autre que la rapidite d'acces, sans partionnement, a la suite d'un crash il faudrait reinstaller le systeme d'exploitation
+	- En bref, il permet de proteger et isoler les differents composants du systeme de fichiers
 	/boot contient noyau de demarrage et des fichiers (autorise que par root)
 	/tmp contient fichiers temporaires
 	/srv contient fichiers servis par un service type web
@@ -38,30 +38,30 @@ Partition :
 	
 LVM :
 	Commandes a connaitre : 
-		-Executer les commandes en tant que root (SUDO) par exemple : //sudo lvs
-		-afficher les details succincts des volumes physiques : //pvs
-		-afficher les details succincts des groupes de volumes : //vgs
-		-afficher les details succincts des volumes logiques : //lvs
-		-trouver le chemin d'acces a notre volume physique : //lvdisplay puis trouver le LV Path
-		-creer partition LVM vide sur nouveau disque : //fdisk ou gparted
-		-creer un volume physique sur nouveau disque : //pvcreate/nompartition
-		-verifier nom de cette partition : //sudo pvs
+		- Executer les commandes en tant que root (SUDO) par exemple : //sudo lvs
+		- afficher les details succincts des volumes physiques : //pvs
+		- afficher les details succincts des groupes de volumes : //vgs
+		- afficher les details succincts des volumes logiques : //lvs
+		- trouver le chemin d'acces a notre volume physique : //lvdisplay puis trouver le LV Path
+		- creer partition LVM vide sur nouveau disque : //fdisk ou gparted
+		- creer un volume physique sur nouveau disque : //pvcreate/nompartition
+		- verifier nom de cette partition : //sudo pvs
 
 Aptitude/Apt, difference : 
 	aptitude : 
-		*plus convivial / 
-		*ajoute une couche d'abstraction a partir de apt-get, apt-cache ... / 
-		*haut niveau d'abstraction / 
-		*plus recent et censer etre plus facile a utiliser / 
-		*fournit un une interface menu terminal (un peu comme Synaptic) / 
-		*supprime automatiquement les paquets eligibles
-		*EN BREF : remplit les fonctions apt-get mais ajoute aussi certains des outils d'apt-get suplementaires comme apt-cache ou apt-mark
-		*EN PLUS : si des actions que l'on veut faire provoque un conflit, aptitude suggere plusieurs solutions, pas apt-get
+		- plus convivial / 
+		- ajoute une couche d'abstraction a partir de apt-get, apt-cache ... / 
+		- haut niveau d'abstraction / 
+		- plus recent et censer etre plus facile a utiliser / 
+		- fournit un une interface menu terminal (un peu comme Synaptic) / 
+		- supprime automatiquement les paquets eligibles
+		- EN BREF : remplit les fonctions apt-get mais ajoute aussi certains des outils d'apt-get suplementaires comme apt-cache ou apt-mark
+		- EN PLUS : si des actions que l'on veut faire provoque un conflit, aptitude suggere plusieurs solutions, pas apt-get
 	apt_get : 
-		plutot utiliser par programme de niveau superieur / 
-		facile a utiliser par utilisateurs / 
-		pas d'interface menu
-		requiert commande separes pour les paquets eligibles
+		- plutot utiliser par programme de niveau superieur / 
+		- facile a utiliser par utilisateurs / 
+		- pas d'interface menu
+		- requiert commande separes pour les paquets eligibles
 	Mais les deux utilisent les memes referentiels
 
 	SUPPLEMENT : il existe un outil appele Wajig 
@@ -97,31 +97,31 @@ TTY :
 	 By defaults, Ubuntu has 7 tty's
 
 UTILISATEURS :
-	*Ajouter un utilisateur : //sudo adduser username
+	- Ajouter un utilisateur : //sudo adduser username
 		cela va ajouter les infos dans // /etc/passwd   /  /etc/group   /   /etc/shadow
 		aussi creer un user home directory dans //  /etc/skel
-	*Creer un groupe (avoir droits sudo ou root) : // (sudo) groupadd namegroup
-	*Add existing user account to a group : // sudo usermod -aG namegroup username
+	- Creer un groupe (avoir droits sudo ou root) : // (sudo) groupadd namegroup
+	- Add existing user account to a group : // sudo usermod -aG namegroup username
 	 	-a to append : add the user to the supplementary group. Only used with -G
 		-G : mean groups / so with -a its to append in a group 
 
 SUDO :
-	*permet de gerer, autoriser ou refuser a un utilisateur l'execution de taches privilegiees avec ou sans saisie de mdp
-	*GESTION DES DROITS : dans fichier // /etc/sudoers
-	*Tous les fichiers du répertoire /etc/sudoers.d/ ne finissant pas par ~ ou ne contenant pas un . sont lus et analysés lorsque l'on utilise la commande sudo
-	*Add user to sudo : // sudo usermod -aG sudo username
-	*Synthaxe d'une regle sudo (cf screenshot) : // %sudo     ALL=(ALL:ALL)  ALL
-	*MODIFIER LE FICHIER EN QUESTION : // sudo visudo
+	- permet de gerer, autoriser ou refuser a un utilisateur l'execution de taches privilegiees avec ou sans saisie de mdp
+	- GESTION DES DROITS : dans fichier // /etc/sudoers
+	- Tous les fichiers du répertoire /etc/sudoers.d/ ne finissant pas par ~ ou ne contenant pas un . sont lus et analysés lorsque l'on utilise la commande sudo
+	- Add user to sudo : // sudo usermod -aG sudo username
+	- Synthaxe d'une regle sudo (cf screenshot) : // %sudo     ALL=(ALL:ALL)  ALL
+	- MODIFIER LE FICHIER EN QUESTION : // sudo visudo
 		Il effectue une vérification de l'intégrité du fichier après modification avant de l'enregistrer. En cas d'erreur lors de la modification, le nouveau fichier n'est pas enregistré
 		A la fermeture, directement edite
 		Peut donc ajouter des lignes dans ce fichier afin d'instruire des regles particulieres
 		cf SCREEN DANS DOSSIER
-	*INSTALLER PAM (Pluggable Authentication Modules) : // sudo apt-get install libpam-cracklib
+	- INSTALLER PAM (Pluggable Authentication Modules) : // sudo apt-get install libpam-cracklib
 		Edit the file : // vi /etc/pam.d/common-password
 		Find so informations in it : retry, minlen, difok... Its all about changing those values
 	//	Tout savoir sur PAM : www.tecmint.com/configure-pam-in-centos-ubuntu-linux/
 	//	https://support.huaweicloud.com/intl/en-us/hss_faq/hss_01_0043.html
-	*POUR LE GROUPE SUDO : 
+	- POUR LE GROUPE SUDO : 
 		-Message d'erreur en cas de mauvais mdp : fichier dans // /etc/sudoers
 			commande : // sudo visudo
 			add la ligne suivante dans Defaults : // Defaults badpass_message="message"
