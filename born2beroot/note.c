@@ -131,8 +131,88 @@ SUDO :
 			add dans Defaults : // Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 		-ARCHIVER LES COMMANDES SUDO ??????
 			a verifier : // sudo grep sudo /var/log/auth.log > namefile.txt
+			ou bien :    // sudo nano /var/log/auth.log.
+   						//  sudo grep sudo /var/log/auth.log.
+   						//  sudo grep sudo /var/log/auth.log > sudolist.txt.
+    					//  sudo nano /home/USERNAME/.bash_history.
 		-ACTIVER MODE TTY ???
 			a verifier : dans le fichiers sudoers dans Defaults : // Defaults requiretty
+SCRIPT :
+	- COMMANDE WALL :
+		write a message to all users
+		displays a message, or the contents of a file, or otherwise its standard input, on the terminals of all currently logged in users
+        command will always put a carriage return and new line at the end of each line
+		-g : limit printing message to members of group defined
+		-n : suppress the banner
+	- PRINTF : 
+		\n for newline, \r for carriage retyrn ...
+		'-' left align the printed text
+		https://linuxize.com/post/bash-printf-command/
+	- df :
+		= disk free
+		commande UNIX pour afficher la valeur d'espace disque disponible des systemes de fichier dont l'utilisateur possede l'acces
+		df -h : espace disque libre est liste en format visible pour l'homme
+	- awk : 
+		agit comme un filtre programmable prenant une série de lignes en entrée (sous forme de fichiers ou directement via l'entrée standard) et écrivant sur la sortie standard, qui peut être redirigée vers un autre fichier ou programme
+		syntaxe est inspiree du C : awk [options] [programme] [fichier]
+	- top :
+		sed to show the Linux processes. It provides a dynamic real-time view of the running system
+		-b : Batch mode = send output from top to file or any other programs
+		-n 1 : this command keep refreshing umtil we press 'q' -> with this top command will automatically exit after 1 number of repetition
+	- netstat : 
+		-a : list all connections
+		-at : To list out only tcp connections use the -t options
+		-ant :  command shows ALL TCP connections with NO dns resolution
+		-n : for numeric, print address with numeric format
+	- id : 
+		print real and effective user and groups IDs
+		-u : print only the effective user ID
+	- who :
+		show who is connected
+		-q : Affiche  uniquement les noms d'utilisateurs et le nombres de personnes connectées, priorité sur toutes les autres options
+
+
+==============================================================SCRIPT BASH====================================================================
+
+	- Architecture : 
+		Commande // arch : same as uname -m : output = x86_64
+				// dpkg --print-architecture : display Debian operating system is 64-bit
+				// uname -a : display linux system's OS type
+	- Nombre de processeurs physiques : 
+		Count the number of lines starting with processor in /proc/cpuinfo : // grep -c ^processor /proc/cpuinfo
+																autre piste: // awk '/^processor/{n+=1}END{print n}' /proc/cpuinfo
+
+	- Nombre de processeurs virtuels :
+   		Command : // cat /proc/cpuinfo | grep processor | wc -l
+	- Memory Usage : 
+		Command : // free
+		La commande nous fournit toutes les informations, avec grep etc il y a moyen de faire la ligne attendue par le sujet
+	- Memory Usage + Disk Usage + CPU Load (taux utilisation processeurs sous forme de pourcentage)
+		// free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
+		// df -h | awk '$NF=="/"{printf "Disk Usage: %d/%dGB (%s)\n", $3,$2,$5}'
+		// top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' 
+	- Heure/Date du dernier demarrage : 
+		info est dispo dans : /proc/uptime 
+		// last|grep boot
+		// who -b : permet avoir le dernier reboot
+	- LVM running ?????????
+	- Numbers of TCP Connexions : 
+		probably using : // netstat command with grep ...
+		pistes : // netstat -an|grep ESTABLISHED | grep -w 1935
+				 // netstat -ant | grep ESTABLISHED | wc 
+	- Numbers of users logged in :
+		probably using : // id command	
+		or : // who command : who | sort -uk1,1 | wc -l
+	- MAC adress :
+		// cat /sys/class/net/*/address
+		// or : ifconfig <Interface ex:eth0,eth1> | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'
+	- IPV4 address :
+		// hostname -I
+		// or : /sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1
+		// or : ifconfig | awk '/inet addr/{print substr($2,6)}'
+	- Nombre de commandes sudo : 
+		Probablement se servir du file ou sont stockees les commandes sudo et incrementer un compteur a chaque commande tapees
+
 
 POUR LE PROJET : 
 	*Hostname (nom machine) = tpauvret42
