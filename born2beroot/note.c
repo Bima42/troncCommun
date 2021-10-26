@@ -218,3 +218,98 @@ POUR LE PROJET :
 	*Hostname (nom machine) = tpauvret42
 	*Installer et configurer sudo
 	*2 utilisateurs : root + tpauvret (doit appartenir au groupe sudo, et au groupe user42)
+
+BIBLE : 
+https://baigal.medium.com/born2beroot-e6e26dfb50ac
+
+=========================================================DEMARCHE SUIVIE POUR PROJET=========================================================
+
+1/ Install VM without SSH, choose LVM with encryption
+2/ Sudo : 
+	Login as root : // su -
+	Install sudo : // apt-get update -y
+   				   // apt-get upgrade -y
+				   // apt-get install sudo
+	
+	Add user in sudo group : // su -
+							 // usermod -aG sudo username
+	Check user in sudo group : // getent group sudo
+	Open sudoers file : // sudo visudo
+	Add this line in file : // username		ALL=(ALL) ALL
+3/ Installing git : // apt-get install git -y
+	Check version : // git --version
+
+4/ Installing VIM : // sudo apt-get install vim
+5/ Install SSH :
+	// sudo apt-get update
+	// sudo apt install openssh-server
+	Check SSH server status : // sudo systemctl status ssh
+	Restart the service : // service shh restart
+	Changing default port to 4242 : // sudo vim /etc/ssh/sshd_config
+									// change the line #Port22 to Port 4242
+	Restart the service
+
+6/ Install UFW : 
+	Install : // apt-get install ufw
+	Enable : // sudo ufw enable
+	Check status : // sudo ufw status numbered
+	Configure rules : // sudo ufw allow ssh
+	Configure port rules : // sudo ufw allow 4242
+	(EVALUTION) : Delete a new rule : // sudo ufw status numbered // sudo ufw delete (number of the rule)
+
+7/ Password policy : 
+	Install PAM.D : // sudo apt-get install libpam-pawquality
+	Change the length : // sudo vim /etc/pam.d/common-password
+	Find the line : // password [success=2 default=ignore] pam_unix.so obscure sha512
+	Add extraline : // minlen=10
+	Find line : // password		requisite		pam_pwquality.so retry=3
+	Add values after retry : // lcredit =-1
+    Add this after : // ucredit=-1 dcredit=-1 maxrepeat=3 usercheck=0 difok=7
+					 // enforce_for_root
+	Password expiration : // sudo vim /etc/login.defs
+		find this part : // PASS_MAX_DAYS 30 -> PASS_MAX_DAYS 30
+						 // PASS_MIN_DAYS 0 ->  PASS_MIN_DAYS 2
+						 // PASS_WARN_AGE 7 ->  PASS_WARN_AGE 7
+		then : // sudo reboot
+
+8/ Create group : 
+	// sudo groupeadd name_group
+	check si le groupe est cree : // getent group
+
+9/ Create user : 
+	// sudo adduser new_username
+	Assigning an user to a group : // sudo usermod -aG name_group username
+	Check assignation : // gentent group name_group
+	Check which groups user account belongs : // groups
+
+10/ Configuring sudoers group : 
+	// sudo vim /etc/sudoers
+	Add those lines in Defaults : // Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+								  // Defaults	passwd_tries=3
+								  // Defaults	badpass_message="Password is wrong, please try again !"
+								  // Defaults	logfile="/var/log/sudo/sudo.log"
+								  // Defaults 	log_input, log_output
+								  // Defaults	requiretty
+
+11/ Change hostname : 
+	Check current hostname : // hostnamectl
+	Change hostname : // hostnamectl set-hostname new_hostname
+	Change /etc/hosts file : // sudo vim /etc/hosts
+	Change old name with new name
+	Reboot and check changes : // sudo reboot
+
+12/ Crontab configuration and script : 
+	Install netstat tools : // sudo apt-get install -y net-tools
+	Place monitoring.sh in : // /usr/local/bin
+	Do the script
+	Add rule that script would execute without sudo password :
+		Open sudoers file : // sudo visudo
+		Add line : // username ALL=(ALL) NOPASSWD: /usr/local/bin/monitoring.sh
+	Reboot : // sudo reboot
+	Execute script as su : // sudo /usr/local/bin/monitoring.sh
+	Open crontab  : // sudo crontab -u root -e
+	Add rule at the end : // */10 * * * * /usr/local/bin/monitoring.sh
+		10 here means every 10 minutes the script will show
+
+
+	
