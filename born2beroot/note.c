@@ -1,3 +1,5 @@
+========================================================CONNAISSANCES ET RECHERCHES===========================================================
+
 Debian : 
 	- Plus simple a prendre en main et a setup
 	- ISO = netinst debian x64
@@ -135,8 +137,6 @@ SUDO :
    						//  sudo grep sudo /var/log/auth.log.
    						//  sudo grep sudo /var/log/auth.log > sudolist.txt.
     					//  sudo nano /home/USERNAME/.bash_history.
-		-ACTIVER MODE TTY ???
-			a verifier : dans le fichiers sudoers dans Defaults : // Defaults requiretty
 SCRIPT :
 	- COMMANDE WALL :
 		write a message to all users
