@@ -193,16 +193,12 @@ SCRIPT :
 		// top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' 
 	- Heure/Date du dernier demarrage : 
 		info est dispo dans : /proc/uptime 
-		// last|grep boot
-		// who -b : permet avoir le dernier reboot
+		// uptime -s
 	- LVM running ?????????
 	- Numbers of TCP Connexions : 
-		probably using : // netstat command with grep ...
-		pistes : // netstat -an|grep ESTABLISHED | grep -w 1935
-				 // netstat -ant | grep ESTABLISHED | wc 
+		 // netstat -ant | grep ESTABLISHED | wc -l 
 	- Numbers of users logged in :
-		probably using : // id command	
-		or : // who command : who | sort -uk1,1 | wc -l
+		// who command : who | sort -uk1,1 | wc -l
 	- MAC adress :
 		// cat /sys/class/net/*/address
 		// or : ifconfig <Interface ex:eth0,eth1> | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'
@@ -235,7 +231,7 @@ https://baigal.medium.com/born2beroot-e6e26dfb50ac
 							 // usermod -aG sudo username
 	Check user in sudo group : // getent group sudo
 	Open sudoers file : // sudo visudo
-	Add this line in file : // username		ALL=(ALL) ALL
+	Add this line in file : // username		ALL=(ALL:ALL) ALL
 3/ Installing git : // apt-get install git -y
 	Check version : // git --version
 
@@ -255,9 +251,9 @@ https://baigal.medium.com/born2beroot-e6e26dfb50ac
 	Check status : // sudo ufw status numbered
 	Configure rules : // sudo ufw allow ssh
 	Configure port rules : // sudo ufw allow 4242
-	(EVALUTION) : Delete a new rule : // sudo ufw status numbered // sudo ufw delete (number of the rule)
+	(EVALUATION) : Delete a new rule : // sudo ufw status numbered // sudo ufw delete (number of the rule)
 
-7/ Password policy : 
+7/ Password policy : CF IMAGE ON GITHUB/Bima42 
 	Install PAM.D : // sudo apt-get install libpam-pawquality
 	Change the length : // sudo vim /etc/pam.d/common-password
 	Find the line : // password [success=2 default=ignore] pam_unix.so obscure sha512
@@ -273,16 +269,18 @@ https://baigal.medium.com/born2beroot-e6e26dfb50ac
 		then : // sudo reboot
 
 8/ Create group : 
-	// sudo groupeadd name_group
-	check si le groupe est cree : // getent group
+	// sudo groupadd name_group
+	check si le groupe est cree : // getent name_group
+	delete group : // sudo groupdel name_group
 
 9/ Create user : 
 	// sudo adduser new_username
 	Assigning an user to a group : // sudo usermod -aG name_group username
-	Check assignation : // gentent group name_group
+	Check assignation : // getent group name_group
 	Check which groups user account belongs : // groups
+	Delete user : // sudo userdel username
 
-10/ Configuring sudoers group : 
+10/ Configuring sudoers group : CF IMAGE ON GITHUB/Bima42
 	// sudo vim /etc/sudoers
 	Add those lines in Defaults : // Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 								  // Defaults	passwd_tries=3
@@ -304,7 +302,7 @@ https://baigal.medium.com/born2beroot-e6e26dfb50ac
 	Do the script
 	Add rule that script would execute without sudo password :
 		Open sudoers file : // sudo visudo
-		Add line : // username ALL=(ALL) NOPASSWD: /usr/local/bin/monitoring.sh
+		Add line : // username ALL=(root) NOPASSWD: /usr/local/bin/monitoring.sh
 	Reboot : // sudo reboot
 	Execute script as su : // sudo /usr/local/bin/monitoring.sh
 	Open crontab  : // sudo crontab -u root -e
