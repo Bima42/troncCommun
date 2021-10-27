@@ -31,16 +31,16 @@ CHECK UFW, SSH .. :
 	- Systeme utilise : uname -a
 
 PARTIE USER :
-	- Check de l'existence d'un groupe : getent nom_groupe (sudo et user42)
+	- Check de l'existence d'un groupe : getent group <nom_groupe> (sudo et user42)
 	- Check password policy : sudo vim/etc/pam.d/common-password (tout est dedans)
-	- Creer user : sudo adduser username
+	- Creer user : sudo adduser <username>
 	- Explication des regles : minlen etc
 	- Creer groupe eval : sudo addgroup eval
-	- Assigner un user au groupe eval : sudo usermod -aG eval username
+	- Assigner un user au groupe eval : sudo usermod -aG eval <username>
 
 HOSTNAME :
 	- Check hostname : hostnamectl
-	- Changer hostanme : hostnamectl set-hostname new_hostname
+	- Changer hostanme : hostnamectl set-hostname <new_hostname>
 	- Changer le nom dans fichier : sudo vim /etc/hosts
 	- Changer les noms et reboot
 	- Voir paritions : lsblk
