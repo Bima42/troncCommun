@@ -92,5 +92,8 @@
 	Reboot : // sudo reboot
 	Execute script as su : // sudo /usr/local/bin/monitoring.sh
 	Open crontab  : // sudo crontab -u root -e
-	Add rule at the end : // */10 * * * * /usr/local/bin/monitoring.sh
+	Add rule at the end : // */10 * * * *  /usr/local/bin/monitoring.sh
 		10 here means every 10 minutes the script will show
+
+13/ Get the Disk Identifier : 
+	- Using shasum command in goinfre/username, then using shasum on the disk.vdi to get the signature

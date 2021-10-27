@@ -95,6 +95,6 @@ SCRIPT :
 			 crontab -e : ouvrir fichier pour configurer (crontab etant le nom du programme qui permet d'editer)
 			 			  -e permet la modification 
 			 format : mm hh jj MMM JJJ tâche_a_executer
-			 exemple pour run toutes les 30s : * * * * *              /path/to/executable
-											   * * * * * ( sleep 30 ; /path/to/executable )
+			 exemple pour run toutes les 30s : * * * * *             bash /path/to/executable
+											   * * * * * ( sleep 30 ; bash /path/to/executable )
 
