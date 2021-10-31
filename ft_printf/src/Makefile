@@ -1,4 +1,4 @@
-SRCS	=	ft_printf.c ft_putnbrbase.c
+SRCS	=	ft_printf.c ft_putnbrbase.c ft_printf_utils.c
 
 MAIN	=	main.c
 

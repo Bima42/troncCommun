@@ -22,7 +22,15 @@ static void	detection_type(va_list count_args, const char *str, int *count)
 	else if (str[*count] == STRING)
 		ft_putstr(va_arg(count_args, char *));
 	else if (str[*count] == INT)
-		ft_putnbr_fd(va_arg(count_args, int), 1);
+		ft_putnbr(va_arg(count_args, int));
+	else if (str[*count] == DOUBLE)
+		ft_putnbr(va_arg(count_args, int));
+	else if (str[*count] == UNSIGNED)
+		ft_putnbr(va_arg(count_args, unsigned int));
+	else if (str[*count] == HEXA)
+		ft_putnbrbase(va_arg(count_args, unsigned int), "0123456789abcdef");
+	else if (str[*count] == POINTER)
+		ft_putstr(va_arg(count_args, void *));
 //	else if (str[*count] == 'p')
 }
 
