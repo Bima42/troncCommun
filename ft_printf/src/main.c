@@ -2,51 +2,67 @@
 
 int	main()
 {
-	printf("Print moi mes premiers tests chien\n");
-	ft_printf("Print moi mes premiers tests chien\n");
+	int	v;
+	int	my_v;
+
+	v = printf("Print moi mes premiers tests chien\n");
+	my_v = ft_printf("Print moi mes premiers tests chien\n");
+	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("------------------\n");
 
-	printf("Un char : %c\n", 'a');
-	ft_printf("Mon char : %c\n", 'a');
+	v = printf("Une char : %c\n", 'a');
+	my_v = ft_printf("Mon char : %c\n", 'a');
+	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("------------------\n");
 
-	printf("Une string : %s", "Mama la string\n");
-	ft_printf("Mon string : %s", "Mama ne touche pas mes string\n");
+	v = printf("Une string : %s", "Mama la string\n");
+	my_v = ft_printf("Mon string : %s", "Mama la string\n");
+	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("------------------\n");
 
-	printf("Un int : %i\n", -56854);
-	ft_printf("Mon int : %i\n", -56854);
+	v = printf("Un int : %i\n", -56854);
+	my_v = ft_printf("Mon int : %i\n", -56854);
+	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("------------------\n");
 
-	printf("Un double : %d\n", -5665);
-	ft_printf("Mon double : %d\n", -5665);
+	v = printf("Un double : %d\n", -5665);
+	my_v = ft_printf("Mon double : %d\n", -5665);
+	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("------------------\n");
 
-	printf("Un unsigned : %u\n", 1248);
-	ft_printf("Mon unsigned : %u\n", 1248);
+	v = printf("Un unsigned : %u\n", 1248);
+	my_v = ft_printf("My unsigned : %u\n", 1248);
+	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("------------------\n");
 
-	printf("Un entier en hexa : %x\n", 25698);
-	ft_printf("Mon entier hexa : %x\n", 25698);
+	v = printf("Un entier en hexa : %x\n", 25698);
+	my_v = ft_printf("My entier en hexa : %x\n", 25698);
+	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("------------------\n");
 
-
-	printf("Un pourcent : %%\n");
-	ft_printf("Mon pourcent : %%\n");
+	v = printf("Un purcent : %%%%\n");
+	my_v = ft_printf("My purcent : %%%%\n");
+	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("------------------\n");
+
+/*	printf("Mix : %d et puis %c\n", 123, 'z');
+	ft_printf("Mix : %d et puis %c\n", 123, 'z');
+
+	ft_printf("------------------\n");*/
 
 	int a = 12;
 	void *p = &a;
 
-	printf("Un pointeur : %p\n", p);
-	ft_printf("Mon pointeur : %p\n", p);
+	v = printf("Un pointeur : %p\n", p);
+	my_v = ft_printf("Mon pointeur : %p\n", p);
+	printf("Value = %d || My value = %d\n", v, my_v);
 	return (0);
 }
