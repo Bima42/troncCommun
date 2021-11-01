@@ -1,6 +1,6 @@
 LIBFT_DIR		=	libft/
 
-SRCS_PRINT		=	ft_printf.c ft_putnbrbase.c
+SRCS_PRINT		=	ft_printf.c ft_all_putnbr.c ft_printf_utils.c
 
 OBJS_PRINT		=	$(addprefix src/, $(SRCS_PRINT:.c=.o))
 

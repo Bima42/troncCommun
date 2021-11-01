@@ -5,7 +5,17 @@ int	main()
 	int	v;
 	int	my_v;
 
-	v = printf("Print moi mes premiers tests chien\n");
+	ft_printf("--------------STRING_TEST---------------\n");
+
+	v = printf("Une string : %s", "Mama la string\n");
+	my_v = ft_printf("Mon string : %s", "Mama la string\n");
+	printf("Value = %d || My value = %d\n", v, my_v);
+	v = printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
+	my_v = ft_printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
+	printf("Value = %d || My value = %d\n", v, my_v);
+
+	ft_printf("--------------------------------------------\n");
+/*	v = printf("Print moi mes premiers tests chien\n");
 	my_v = ft_printf("Print moi mes premiers tests chien\n");
 	printf("Value = %d || My value = %d\n", v, my_v);
 
@@ -70,7 +80,7 @@ int	main()
 
 	v = printf("Mix2 : %%%d%%%i\n", 123, 456);
 	my_v = ft_printf("Mix2 : %%%d%%%i\n", 123, 456);
-	printf("Value = %d || My value = %d\n", v, my_v);
+	printf("Value = %d || My value = %d\n", v, my_v);*/
 
 	return (0);
 }
