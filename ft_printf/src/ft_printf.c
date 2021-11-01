@@ -61,12 +61,15 @@ static int	ft_count_ret(const char *str)
 	while (str[i] != '\0')
 	{
 		if (str[i] == PURCENT && str[i + 1] == PURCENT)
+		{
+			i++;
 			count_double_purcent++;
-		else if (str[i] == PURCENT && str[i + 1] != PURCENT)
+		}
+		else if (str[i] == PURCENT)
 			count_purcent++;
 		i++;
 	}
-	i -= (2 * count_purcent);
+	i -= (2 * count_purcent) + (2 * count_double_purcent);
 	return (i);
 }
 
