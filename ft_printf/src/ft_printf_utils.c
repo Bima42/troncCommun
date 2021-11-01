@@ -12,6 +12,8 @@ int	ft_count_ret(const char *str)
         int count_purcent;
         int count_double_purcent;
 
+		if (!str)
+			return (0);
         i = 0;
         count_purcent = 0;
         count_double_purcent = 0;
@@ -34,27 +36,23 @@ void	ft_putstr(const char *str, int *count)
 {
 	int	i;
 
+	if (!str)
+	{
+		ft_putstr_fd("(null)", 1);
+		*count += 6;
+		return ;
+	}
 	i = 0;
 	while (str[i] != '\0')
 	{
 		ft_putchar_count(str[i], count);
-		//*count += 1;
 		i++;
 	}
 }
 
 void	ft_get_address_ptr(void *ptr, int *char_written)
 {
-	if	((long long)ptr == 0)
-	{
-		write(1, "(nil)", 5);
-		*char_written += 5;
-		return ;
-	}
-	else
-	{
-		write(1, "0x", 2);
-		ft_putnbrbase((long long)ptr, BASE_HEXA, char_written);
-		*char_written += 2;
-	}
+	write(1, "0x", 2);
+	ft_putnbrbase((long)ptr, BASE_HEXA, char_written);
+	*char_written += 2;
 }

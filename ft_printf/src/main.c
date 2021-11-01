@@ -3,7 +3,7 @@
 int	main()
 {
 	int	v;
-	int	my_v;
+//	int	my_v;
 
 /*	ft_printf("--------------STRING_TEST---------------\n");
 
@@ -69,9 +69,10 @@ int	main()
 
 	ft_printf("--------------------------------------------\n");
 */
-	v = printf(" %p %p \n", (void *)0, (void *)0);
-	my_v = ft_printf(" %p %p \n", (void *)0, (void *)0);
-	printf("Value = %d || My value = %d\n", v, my_v);
+	char *str = NULL;
+	v = printf(" NULL %s NULL ", str);
+//	my_v = ft_printf(" %p %p \n", (void *)0, (void *)0);
+	printf("Value = %d\n", v);
 
 	ft_printf("--------------------------------------------\n");
 
