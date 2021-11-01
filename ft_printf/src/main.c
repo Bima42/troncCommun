@@ -24,13 +24,13 @@ int	main()
 	ft_printf("--------------------------------------------\n");
 
 	v = printf("Un int : %i\n", -56854);
-	my_v = ft_printf("Mon int : %i\n", -56854);
+	my_v = ft_printf("My int : %i\n", -56854);
 	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("--------------------------------------------\n");
 
 	v = printf("Un double : %d\n", -5665);
-	my_v = ft_printf("Mon double : %d\n", -5665);
+	my_v = ft_printf("My double : %d\n", -5665);
 	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("--------------------------------------------\n");

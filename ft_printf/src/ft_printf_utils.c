@@ -7,7 +7,7 @@ void	ft_putnbr(int n, int *char_written)
 	if (n < 0)
 	{
 		nb = (unsigned int)(-1 * n);
-		ft_putchar('-');
+		ft_putchar_count('-', char_written);
 	}
 	else
 		nb = (unsigned int)n;
