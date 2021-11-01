@@ -5,7 +5,7 @@ int	main()
 	int	v;
 	int	my_v;
 
-	ft_printf("--------------STRING_TEST---------------\n");
+/*	ft_printf("--------------STRING_TEST---------------\n");
 
 	v = printf("Une string : %s", "Mama la string\n");
 	my_v = ft_printf("Mon string : %s", "Mama la string\n");
@@ -15,7 +15,7 @@ int	main()
 	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("--------------------------------------------\n");
-/*	v = printf("Print moi mes premiers tests chien\n");
+	v = printf("Print moi mes premiers tests chien\n");
 	my_v = ft_printf("Print moi mes premiers tests chien\n");
 	printf("Value = %d || My value = %d\n", v, my_v);
 
@@ -68,17 +68,14 @@ int	main()
 	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("--------------------------------------------\n");
-
-	int a = 12;
-	void *p = &a;
-
-	v = printf("Un pointeur : %p\n", p);
-	my_v = ft_printf("Mon pointeur : %p\n", p);
+*/
+	v = printf(" %p %p \n", (void *)0, (void *)0);
+	my_v = ft_printf(" %p %p \n", (void *)0, (void *)0);
 	printf("Value = %d || My value = %d\n", v, my_v);
 
 	ft_printf("--------------------------------------------\n");
 
-	v = printf("Mix2 : %%%d%%%i\n", 123, 456);
+/*	v = printf("Mix2 : %%%d%%%i\n", 123, 456);
 	my_v = ft_printf("Mix2 : %%%d%%%i\n", 123, 456);
 	printf("Value = %d || My value = %d\n", v, my_v);*/
 

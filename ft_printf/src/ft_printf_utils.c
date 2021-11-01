@@ -45,7 +45,16 @@ void	ft_putstr(const char *str, int *count)
 
 void	ft_get_address_ptr(void *ptr, int *char_written)
 {
-        write(1, "0x", 2);
-        ft_putnbrbase((unsigned long)ptr, BASE_HEXA, char_written);
-        *char_written += 2;
+	if	((long long)ptr == 0)
+	{
+		write(1, "(nil)", 5);
+		*char_written += 5;
+		return ;
+	}
+	else
+	{
+		write(1, "0x", 2);
+		ft_putnbrbase((long long)ptr, BASE_HEXA, char_written);
+		*char_written += 2;
+	}
 }
