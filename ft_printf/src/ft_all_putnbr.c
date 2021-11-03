@@ -15,7 +15,7 @@ int	ft_nbrlen_hexa(unsigned long nb)
 	return (count);
 }
 
-void	ft_putnbrbase(long unsigned int nb, char *base, int *char_written)
+void	ft_putnbrbase(unsigned long nb, char *base, int *char_written)
 {
 	size_t	base_size;
 
