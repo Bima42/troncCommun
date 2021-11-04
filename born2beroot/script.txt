@@ -25,7 +25,7 @@ sucmd=$(cat /var/log/sudo/sudo.log | wc -l | awk '{printf "%d", $1 / 2}')
 wall " 	#Architecture : $arc
 	#CPU physical : $cpup
 	#vCPU : $cpuv
-	#Memore Usage : $memu
+	#Memory Usage : $memu
 	#Disk Usage : $disku
 	#CPU Usage : $cpuu
 	#Last Boot : $lstboot
