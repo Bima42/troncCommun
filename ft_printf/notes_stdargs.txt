@@ -1,0 +1,16 @@
+va_start()
+La macro va_start() initialise ap pour les utilisations ultérieures de va_arg() et va_end(), et doit donc être appelée en premier.
+
+Le paramètre last est le nom du dernier paramètre avant la liste d'argument variable, c'est-à-dire le dernier paramètre dont la fonction connaisse le type.
+
+Comme l'adresse de ce paramètre est utilisée dans la macro va_start(), il ne doit pas être déclaré comme une variable en registre, ni comme un type fonction ou tableau.  
+va_arg()
+La macro va_arg() se développe en une expression qui a le type et la valeur de l'argument suivant de l'appel. Le paramètre ap est la va_list ap initialisée par va_start(). Chaque appel de va_arg() modifie ap pour que l'appel suivant renvoie l'argument suivant. Le paramètre type est le nom du type, indiqué de telle manière qu'un pointeur sur un objet de ce type puisse être déclaré simplement en ajoutant un astérisque à type.
+
+La première utilisation de la macro va_arg() après celle de va_start() renvoie l'argument suivant last. Les invocations successives renvoient les valeurs des arguments restants.
+
+S'il n'y a pas d'argument suivant, ou si type n'est pas compatible avec le type réel du prochain argument, des erreurs imprévisibles se produiront.
+
+Si ap est passé à une fonction qui utilise va_arg(ap,type) alors la valeur de ap est indéfinie après le retour de cette fonction.  
+va_end()
+À chaque invocation de va_start() doit correspondre une invocation de va_end() dans la même fonction. Après l'appel va_end(ap) la variable ap est indéfinie. Plusieurs traversées de la liste sont possibles, à condition que chacune soit encadrée par va_start() et va_end(). va_end() peut être une macro ou une fonction.  
