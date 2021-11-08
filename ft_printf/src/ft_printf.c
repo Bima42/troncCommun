@@ -27,10 +27,8 @@ static int	detection_type(va_list args, const char *str, int count)
 		ft_putstr(va_arg(args, char *), &char_written);
 	else if (str[count] == INT)
 		ft_putnbr(va_arg(args, int), &char_written);
-	else if (str[count] == DOUBLE)
-		ft_putnbr(va_arg(args, int), &char_written);
 	else if (str[count] == DECIMAL)
-		ft_putnbr(va_arg(count_args, int), &char_written);
+		ft_putnbr(va_arg(args, int), &char_written);
 	else if (str[count] == UNSIGNED)
 		ft_putnbr_unsigned(va_arg(args, unsigned int), &char_written);
 	else if (str[count] == HEXA)
